@@ -5,7 +5,7 @@ import Input from '../Components/Input';
 import Button from '../Components/Button';
 import api from '../api_key';
 import { cityDataProps } from '../interfaces';
-import Map from '../Components/Map';
+import Map from '../Components/MapContainer';
 
 const WeatherApp = () => {
   const [city, setCity] = useState('');
@@ -33,8 +33,7 @@ const WeatherApp = () => {
         <h1 className="weather__banner">Weather around the world</h1>
         <div className="weather__output">
           <div className="weather__mapContainer">
-            map
-            {/* <Map /> */}
+            <Map />
           </div>
 
           <div className="data-container">
