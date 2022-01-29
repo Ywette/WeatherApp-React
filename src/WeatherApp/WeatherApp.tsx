@@ -5,12 +5,12 @@ import Input from '../Components/Input';
 import Button from '../Components/Button';
 import api from '../api_key';
 import { cityDataProps } from '../interfaces';
-import Map from '../Components/MapContainer';
+import MapContainer from '../Components/MapContainer';
 
 const WeatherApp = () => {
   const [city, setCity] = useState('');
   const [cityData, setCityData] = useState<cityDataProps>();
-  const [dataError, setDataError] = useState('');
+  // const [dataError, setDataError] = useState('');
 
   const getCityData = (value: string) => {
     axios
@@ -33,7 +33,10 @@ const WeatherApp = () => {
         <h1 className="weather__banner">Weather around the world</h1>
         <div className="weather__output">
           <div className="weather__mapContainer">
-            <Map />
+            <MapContainer
+              latitude={cityData?.coord.lat}
+              longitude={cityData?.coord.lon}
+            />
           </div>
 
           <div className="data-container">
@@ -45,7 +48,7 @@ const WeatherApp = () => {
                   type="text"
                   name="email"
                   placeholder="Type city name..."
-                  value={city || ''}
+                  value={city}
                   onChange={(e) => setCity(e.target.value)}
                 />
                 <Button
@@ -62,8 +65,8 @@ const WeatherApp = () => {
 
               </div>
               <div className="card-body">
-                <h1 id="weather-type" className="card-title">{cityData?.weather[0].main}</h1>
-                <ul className="list-unstyled">
+                <h1 className="card-title">{cityData?.weather[0].main}</h1>
+                <ul className="">
                   <li>
                     Temp:
                     {cityData?.main.temp}
