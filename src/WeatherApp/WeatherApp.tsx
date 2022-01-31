@@ -6,6 +6,7 @@ import Button from '../Components/Button';
 import api from '../api_key';
 import { cityDataProps } from '../interfaces';
 import MapContainer from '../Components/MapContainer';
+import Map from '../Components/Map';
 
 const WeatherApp = () => {
   const [city, setCity] = useState('');
@@ -26,16 +27,16 @@ const WeatherApp = () => {
     getCityData(city);
     setCity('');
   };
-
+  console.log(cityData);
   return (
-    <div className="weather">
+    <div className={`weather ${cityData?.weather[0].main.toLowerCase()}`}>
       <div className="weather__wrapper">
         <h1 className="weather__banner">Weather around the world</h1>
         <div className="weather__output">
           <div className="weather__mapContainer">
             <MapContainer
-              latitude={cityData?.coord.lat}
-              longitude={cityData?.coord.lon}
+              lat={cityData?.coord.lat || 0}
+              lon={cityData?.coord.lon || 0}
             />
           </div>
 

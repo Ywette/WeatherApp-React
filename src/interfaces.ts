@@ -23,3 +23,11 @@ export interface Temperatures {
   'temp_max': number,
   pressure: number
 }
+
+export interface ViewportProps {
+  latitude: number,
+  longitude: number,
+  width: string,
+  height: string,
+  zoom: number,
+}
