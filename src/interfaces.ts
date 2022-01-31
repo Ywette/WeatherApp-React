@@ -28,6 +28,6 @@ export interface ViewportProps {
   latitude: number,
   longitude: number,
   width: string,
-  height: string,
+  height?: string,
   zoom: number,
 }

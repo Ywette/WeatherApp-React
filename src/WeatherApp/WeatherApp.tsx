@@ -6,16 +6,14 @@ import Button from '../Components/Button';
 import api from '../api_key';
 import { cityDataProps } from '../interfaces';
 import MapContainer from '../Components/MapContainer';
-import Map from '../Components/Map';
 
 const WeatherApp = () => {
   const [city, setCity] = useState('');
   const [cityData, setCityData] = useState<cityDataProps>();
-  // const [dataError, setDataError] = useState('');
 
   const getCityData = (value: string) => {
     axios
-      .get<cityDataProps>(`${api.baseURI}?q=${city}&appid=${api.weatherAPIkey}&units=metric`)
+      .get<cityDataProps>(`${api.baseURI}?q=${city}&appid=${process.env.REACT_APP_WEATHER_API_KEY}&units=metric`)
       .then((response: AxiosResponse) => setCityData(response.data))
       .catch((err) => {
         console.log(err);
@@ -27,13 +25,14 @@ const WeatherApp = () => {
     getCityData(city);
     setCity('');
   };
-  console.log(cityData);
+
   return (
     <div className={`weather ${cityData?.weather[0].main.toLowerCase()}`}>
       <div className="weather__wrapper">
         <h1 className="weather__banner">Weather around the world</h1>
         <div className="weather__output">
           <div className="weather__mapContainer">
+            <pre>{cityData?.coord.lat}</pre>
             <MapContainer
               lat={cityData?.coord.lat || 0}
               lon={cityData?.coord.lon || 0}
