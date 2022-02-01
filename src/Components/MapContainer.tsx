@@ -19,7 +19,7 @@ const MapContainer = (
       width="100%"
       height="100%"
       mapStyle={api.mapsStylesUrl}
-      mapboxApiAccessToken={process.env.REACT_APP_MAP_API_KEY}
+      mapboxApiAccessToken={api.REACT_APP_MAP_API_KEY}
       onViewportChange={(viewPort: ViewportProps) => {
         setViewport(viewPort);
       }}

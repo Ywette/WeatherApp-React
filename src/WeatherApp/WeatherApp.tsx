@@ -14,7 +14,7 @@ const WeatherApp = () => {
 
   const getCityData = (value: string) => {
     axios
-      .get<cityDataProps>(`${api.baseURI}?q=${city}&appid=${process.env.REACT_APP_WEATHER_API_KEY}&units=metric`)
+      .get<cityDataProps>(`${api.baseURI}?q=${city}&appid=${api.REACT_APP_WEATHER_API_KEY}&units=metric`)
       .then((response: AxiosResponse) => setCityData(response.data))
       .catch((err) => {
         // console.log(err);
