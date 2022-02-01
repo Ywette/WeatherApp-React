@@ -1,10 +1,11 @@
 import './WeatherApp.scss';
-import axios, { AxiosResponse } from 'axios';
 import React, { useEffect, useState } from 'react';
+import axios, { AxiosResponse } from 'axios';
+import { cityDataProps } from '../interfaces';
 import Input from '../Components/Input';
 import Button from '../Components/Button';
 import api from '../api_key';
-import { cityDataProps } from '../interfaces';
+
 import MapContainer from '../Components/MapContainer';
 
 const WeatherApp = () => {
@@ -31,10 +32,6 @@ const WeatherApp = () => {
       <div className="weather__wrapper">
         <h1 className="weather__banner">Weather around the world</h1>
         <div className="weather__output">
-          <MapContainer
-            lat={cityData?.coord.lat || 0}
-            lon={cityData?.coord.lon || 0}
-          />
 
           <div className="data-container">
             <div className="search-container">
@@ -56,25 +53,30 @@ const WeatherApp = () => {
               </form>
             </div>
 
-            <div className="card-container">
-              <div className="card-header">
-                <h4 id="city-name" className="">{cityData?.name}</h4>
+            <div className="card__container">
+              <div className="card__header">
+                <h4 className="city__name">
+                  City:
+                  {city ? cityData?.name : 'No data'}
+                </h4>
 
               </div>
-              <div className="card-body">
-                <h1 className="card-title">{cityData?.weather[0].main}</h1>
-                <ul className="">
-                  <li>
+              <div className="card__body">
+                <h1 className="card__title">
+                  {cityData?.weather[0].main}
+                </h1>
+                <ul className="card__info-list">
+                  <li className="card__info-item">
                     Temp:
                     {cityData?.main.temp}
                     &deg;C
                   </li>
-                  <li>
+                  <li className="card__info-item">
                     Min Temp:
                     {cityData?.main.temp_min}
                     &deg;C
                   </li>
-                  <li>
+                  <li className="card__info-item">
                     Max Temp:
                     {cityData?.main.temp_max}
                     &deg;C
@@ -83,6 +85,10 @@ const WeatherApp = () => {
               </div>
             </div>
           </div>
+          <MapContainer
+            lat={cityData?.coord.lat || 54}
+            lon={cityData?.coord.lon || 0}
+          />
         </div>
 
       </div>

@@ -11,7 +11,6 @@ const MapContainer = (
   const [viewport, setViewport] = useState<ViewportProps>({
     latitude: lat,
     longitude: lon,
-    zoom: 1,
   });
 
   return (
