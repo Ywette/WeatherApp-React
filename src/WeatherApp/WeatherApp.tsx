@@ -57,7 +57,7 @@ const WeatherApp = () => {
               <div className="card__header">
                 <h4 className="city__name">
                   City:
-                  {city ? cityData?.name : 'No data'}
+                  {cityData?.name}
                 </h4>
 
               </div>
