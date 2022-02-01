@@ -16,7 +16,7 @@ const WeatherApp = () => {
       .get<cityDataProps>(`${api.baseURI}?q=${city}&appid=${process.env.REACT_APP_WEATHER_API_KEY}&units=metric`)
       .then((response: AxiosResponse) => setCityData(response.data))
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
       });
   };
 
@@ -31,13 +31,10 @@ const WeatherApp = () => {
       <div className="weather__wrapper">
         <h1 className="weather__banner">Weather around the world</h1>
         <div className="weather__output">
-          <div className="weather__mapContainer">
-            <pre>{cityData?.coord.lat}</pre>
-            <MapContainer
-              lat={cityData?.coord.lat || 0}
-              lon={cityData?.coord.lon || 0}
-            />
-          </div>
+          <MapContainer
+            lat={cityData?.coord.lat || 0}
+            lon={cityData?.coord.lon || 0}
+          />
 
           <div className="data-container">
             <div className="search-container">

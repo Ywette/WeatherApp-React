@@ -11,14 +11,14 @@ const MapContainer = (
   const [viewport, setViewport] = useState<ViewportProps>({
     latitude: lat,
     longitude: lon,
-    width: '600px',
-    height: '300px',
     zoom: 1,
   });
 
   return (
     <ReactMapGL
       {...viewport}
+      width="100%"
+      height="100%"
       mapStyle={api.mapsStylesUrl}
       mapboxApiAccessToken={process.env.REACT_APP_MAP_API_KEY}
       onViewportChange={(viewPort: ViewportProps) => {

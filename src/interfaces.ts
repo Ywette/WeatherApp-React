@@ -27,7 +27,5 @@ export interface Temperatures {
 export interface ViewportProps {
   latitude: number,
   longitude: number,
-  width: string,
-  height?: string,
-  zoom: number,
+  zoom?: number,
 }
